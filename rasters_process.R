@@ -14,10 +14,12 @@ res(d_cr1)
 d_cr1@ncols*d_cr1@nrows
 
 
-d_cr2 <- crop(A008_d, extent(17958000,17960000,10660000,10662000))
+d_cr2 <- crop(A008_d, extent(17952000,17955000,10652000,10657000))
 plot(d_cr2, col=gray(1:100/100))
 res(d_cr2)
 d_cr2@ncols*d_cr2@nrows
+
+upland <- drawFeatures( mapview(d_cr2, col=grey(1:100/100)))
 
 
 
@@ -25,5 +27,19 @@ plot(A008_c, col=gray(1:100/100))
 plot(A008_d, col=gray(1:100/100))
 plot(A008_b, col=gray(1:100/100))
 
+
+dem <- raster("E:/Google Drive/GIS/Arctic_DEM/62_30_2_1_2m_v3.0/62_30_2_1_2m_v3.0_reg_dem.tif")
+plot(dem, col=gray(1:100/100))
+demPr <- projectRaster(dem,A008_d)
+plot(demPr)
+res(dem)
+
+dem@crs
+
 #start with small extent near study area
 
+library(glcm)
+
+
+test <- glcm(d_cr1)
+plot(test)
