@@ -36,6 +36,9 @@ res(dem)
 
 dem@crs
 
+
+
+
 #start with small extent near study area
 
 library(glcm)
